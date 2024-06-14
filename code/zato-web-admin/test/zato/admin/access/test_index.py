@@ -113,6 +113,13 @@ class IndexTestCase(BaseTestCase):
             '/zato/cloud/jira/reset-oauth2-scopes/',
             '/zato/security/oauth/outconn/client-credentials/change-secret/',
             '/zato/security/rbac/role/',
+            '/zato/service/ide/create-file/',
+            '/zato/service/ide/delete-file/',
+            '/zato/service/ide/rename-file/',
+            '/zato/service/ide/get-file/',
+            '/zato/service/ide/get-file-list/',
+            '/zato/service/ide/get-service-list/',
+            '/zato/service/upload/',
         }
 
         # Go through all the paths founds ..
@@ -131,7 +138,7 @@ class IndexTestCase(BaseTestCase):
             # .. if we are here, it means that we can visit the URL
             # .. and confirm that all of its responses were fine.
             if should_continue:
-                address = self.config.web_admin_address + item.path# + '?cluster=1'
+                address = self.config.web_admin_address + item.path
                 logger.info('Accessing %s', address)
                 self.client.get(address)
                 self.check_response_statuses()
